@@ -1,0 +1,22 @@
+# Variables de entorno y secretos
+.env
+
+# Entornos virtuales
+venv/
+env/
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.ipynb_checkpoints
+
+# Editores
+.vscode/
+.idea/
+
+# Archivos de registro
+*.log
+
+# Datos locales de PostgreSQL
+postgres_data/

@@ -1,0 +1,50 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql_kardex_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: tu_password_root
+      MYSQL_DATABASE: db_kardex
+    ports:
+      - "33061:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - kardex-net
+
+  phpmyadmin:
+    image: phpmyadmin:5
+    container_name: phpmyadmin_kardex
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: tu_password_root
+    depends_on:
+      - db
+    networks:
+      - kardex-net
+
+  web:
+    build: .
+    container_name: fastapi_kardex_app
+    restart: always
+    ports:
+      - "8001:8000"
+    environment:
+      - DATABASE_URL=mysql+pymysql://root:tu_password_root@db:3306/db_kardex
+    depends_on:
+      - db
+    networks:
+      - kardex-net
+
+volumes:
+  mysql_data:
+
+networks:
+  kardex-net:
+    driver: bridge
