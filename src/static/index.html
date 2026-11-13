@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#163d32">
+  <title>Kardex Agrícola | Gestión integral</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div id="toast" class="toast" role="status"></div>
+  <section id="auth-screen" class="auth-layout">
+    <div class="auth-visual">
+      <div class="brand brand-light"><span class="brand-mark">K</span><span>KARDEX<span class="brand-muted"> AGRÍCOLA</span></span></div>
+      <div class="auth-message">
+        <span class="eyebrow">GESTIÓN AGRÍCOLA INTELIGENTE</span>
+        <h1>Del campo<br>al control.</h1>
+        <p>Centraliza cosechas, lotes y movimientos de inventario en una sola plataforma.</p>
+        <div class="visual-stats">
+          <div><strong>01</strong><span>Producción</span></div>
+          <div><strong>02</strong><span>Inventario</span></div>
+          <div><strong>03</strong><span>Trazabilidad</span></div>
+        </div>
+      </div>
+      <div class="auth-footer">Plataforma de gestión y control · Versión académica</div>
+    </div>
+    <div class="auth-panel">
+      <div class="auth-mobile-brand brand"><span class="brand-mark">K</span><span>KARDEX AGRÍCOLA</span></div>
+      <div class="auth-card">
+        <div class="auth-tabs">
+          <button class="tab active" data-auth-tab="login">Iniciar sesión</button>
+          <button class="tab" data-auth-tab="register">Crear cuenta</button>
+        </div>
+        <div id="login-form-wrap">
+          <span class="eyebrow">BIENVENIDO DE NUEVO</span>
+          <h2>Inicia sesión</h2>
+          <p class="muted">Ingresa tus credenciales para acceder a tu espacio de trabajo.</p>
+          <form id="login-form" class="form-stack">
+            <label>Usuario<input name="username" autocomplete="username" placeholder="Tu nombre de usuario" required></label>
+            <label>Contraseña<input name="password" type="password" autocomplete="current-password" placeholder="Tu contraseña" required></label>
+            <button class="btn btn-primary btn-full" type="submit">Entrar al sistema <span>→</span></button>
+          </form>
+        </div>
+        <div id="register-form-wrap" class="hidden">
+          <span class="eyebrow">NUEVO ACCESO</span>
+          <h2>Crea tu cuenta</h2>
+          <p class="muted">Selecciona el perfil que corresponde a tu actividad.</p>
+          <form id="register-form" class="form-stack">
+            <label>Nombre completo<input name="nombre_completo" placeholder="Ej. Juan Pérez" required maxlength="100"></label>
+            <label>Nombre de usuario<input name="username" placeholder="Elige un usuario" required maxlength="50"></label>
+            <label>Contraseña<input name="password" type="password" placeholder="Mínimo 6 caracteres" minlength="6" required></label>
+            <label>Tipo de cuenta
+              <select name="rol" required>
+                <option value="consulta">Cliente / Usuario de consulta</option>
+                <option value="operador">Trabajador de finca</option>
+                <option value="admin">Encargado / Jefe</option>
+              </select>
+            </label>
+            <div class="notice">Demo académica: la selección de perfil se utiliza para mostrar las interfaces. En producción, el alta de encargados debe ser autorizada por un administrador.</div>
+            <button class="btn btn-primary btn-full" type="submit">Crear cuenta <span>→</span></button>
+          </form>
+        </div>
+        <div class="auth-bottom">¿Necesitas ayuda? Contacta al administrador del sistema.</div>
+      </div>
+    </div>
+  </section>
+
+  <div id="app-shell" class="app-shell hidden">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand brand-light"><span class="brand-mark">K</span><span>KARDEX<span class="brand-muted"> AGRÍCOLA</span></span></div>
+      <div class="side-label">ESPACIO DE TRABAJO</div>
+      <nav id="side-nav"></nav>
+      <div class="sidebar-bottom">
+        <div class="profile-mini"><div class="avatar" id="user-avatar">U</div><div><strong id="side-user">Usuario</strong><small id="side-role">Perfil</small></div></div>
+        <button id="logout-btn" class="logout-btn">↪ <span>Cerrar sesión</span></button>
+      </div>
+    </aside>
+    <main class="main-area">
+      <header class="topbar">
+        <button id="menu-toggle" class="icon-btn mobile-only" aria-label="Abrir menú">☰</button>
+        <div><div class="breadcrumb">Kardex Agrícola <span>/</span> <b id="page-crumb">Resumen</b></div><div class="top-date" id="today-label"></div></div>
+        <div class="top-actions"><span class="status-dot"></span><span class="status-text">Sistema conectado</span><div class="avatar avatar-top" id="top-avatar">U</div></div>
+      </header>
+      <div class="content" id="page-content"></div>
+      <footer class="main-footer">Kardex Agrícola <span>·</span> Gestión de producción e inventario</footer>
+    </main>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
